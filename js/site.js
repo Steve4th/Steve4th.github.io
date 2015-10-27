@@ -12,7 +12,16 @@ $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
 
-//Smooth scrolling between links from https://css-tricks.com/snippets/jquery/smooth-scrolling/
+// Closes the menu on home link click if it is currently open
+$('.navbar-brand').click(function() {
+  if($('#navbar').hasClass('in')) {
+    $('#navbar').animate({height: '1px'}, 500, function() {
+      $('#navbar').removeClass('in');
+    });
+  }
+});
+
+// Smooth scrolling between links from https://css-tricks.com/snippets/jquery/smooth-scrolling/
 $(function() {
   $('a[href*=#]:not([href=#])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
